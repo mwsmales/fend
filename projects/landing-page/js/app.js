@@ -42,6 +42,7 @@ function getSectionNames() {
     return navSections;
 };
 
+
 function addNavSections(navSections) {
     // Add navbar sections to the HTML
     const fragment = document.createDocumentFragment();
@@ -65,16 +66,27 @@ let navSections = getSectionNames();
 addNavSections(navSections);
 
 // Add class 'active' to section when near top of viewport
-// define a function which removes the your-active-selection class from the element which currently has it
 function removeActiveSection() {
     // removes the your-active-selection class from the section which currently has it
-    prevActiveSection = document.querySelector('.your-active-class');
+    let prevActiveSection = document.querySelector('.your-active-class');
     prevActiveSection.classList.remove('your-active-class');
     document.querySelector('.your-active-class');
 }
 
-// TODO: define a function to change the active section to the id specified
 
+function addActiveSection(sectionId) {
+    // function to add the 'your-active-section' class to the element with id=sectionId
+    // sectionId should be provided as string in the format e.g. "#section1"
+    let newActiveSection = document.querySelector(sectionId);
+    newActiveSection.classList.add('your-active-class');
+}
+
+function updateActivecSection(newSectionId) {
+    // function to remove the old 'your-active-section' class and apply it to the specified element
+    // sectionId should be provided as string in the format e.g. "#section1"
+    removeActiveSection();
+    addActiveSection(newSectionId)
+}
 
 // Scroll to anchor ID using scrollTO event
 
