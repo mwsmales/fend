@@ -31,30 +31,20 @@
 */
 
 
-function getSectionNames() {
-    // get a list of sections from the DOM
-    let sections = document.getElementsByTagName('section'); //store html collection
-    let navSections = []; // store the navbar titles
-    for (let i = 0; i < sections.length; i++) {
-        let SectionTitle = sections[i].dataset.nav;
-        navSections.push(SectionTitle);
-    };
-    return navSections;
-};
-
-
-function addNavSections(navSections) {
+function addNavSections(sections) {
     // Add navbar sections to the HTML
     const fragment = document.createDocumentFragment();
-    for (let i = 0; i < navSections.length; i++) {
+    for (let i = 0; i < sections.length; i++) {
         let new_li = document.createElement('li');
-        new_li.innerText = navSections[i];
+        new_li.innerText = sections[i].dataset.nav;
         new_li.className = 'menu__link';
-        new_li.id = 'navlink' + i;
+        new_li.id = 'navlink' + (i+1);
+        new_li.dataset.xref = sections[i].id
         fragment.appendChild(new_li);
     }
     document.getElementById('navbar__list').append(fragment);
 };
+
 
 /**
  * End Helper Functions
@@ -63,8 +53,9 @@ function addNavSections(navSections) {
 */
 
 // build the nav
-let navSections = getSectionNames();
-addNavSections(navSections);
+let sections = document.getElementsByTagName('section'); //store html collection
+
+addNavSections(sections);
 
 // Add class 'active' to section when near top of viewport
 function removeActiveSection() {
@@ -107,12 +98,16 @@ function identifyTopSection() {
 */
 
 // TODO: add event listener for scrolling, which calls function to check and update active section
+document.addEventListener('scroll', function() {console.log('the page scrolled!')});
 
-// TODO: add event listener for clikcing navbar sections, which then calls scrollintoview or some other method
-for (let i = 0; i < navSections.length; i++) {
-    console.log('adding event listener ' + i);
-    let navLink = document.getElementById('navlink' + i);
-    navLink.addEventListener('click', function() {
-        console.log('scrolling to section ' + (i+1));
-    });
+// Add event listeners for clikcing navbar sections, which then calls scrollintoview or some other method
+// TODO: update scrolling function so that it is smooth
+for (let i = 0; i < sections.length; i++) {
+    // console.log('adding event listener ' + (i + 1));
+    let navLink = document.getElementById('navlink' + (i+1));
+    navLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        let scrollTarget = document.getElementById(navLink.dataset.xref);
+        scrollTarget.scrollIntoView({behavior:'smooth'});
+    }); 
 }
