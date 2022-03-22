@@ -50,6 +50,7 @@ function addNavSections(navSections) {
         let new_li = document.createElement('li');
         new_li.innerText = navSections[i];
         new_li.className = 'menu__link';
+        new_li.id = 'navlink' + i;
         fragment.appendChild(new_li);
     }
     document.getElementById('navbar__list').append(fragment);
@@ -88,6 +89,14 @@ function updateActivecSection(newSectionId) {
     addActiveSection(newSectionId)
 }
 
+function identifyTopSection() {
+    /* TODO: function to determine which section is closest to top of viewport
+     * get dimension of top of viewport
+     * get dimension of top of each section
+     * loop through the sections and stop at the first where the top of the section is below the top of the viewport
+    */
+}
+
 // Scroll to anchor ID using scrollTO event
 
 
@@ -97,10 +106,13 @@ function updateActivecSection(newSectionId) {
  * 
 */
 
-// Build menu 
+// TODO: add event listener for scrolling, which calls function to check and update active section
 
-// Scroll to section on link click
-
-// Set sections as active
-
-
+// TODO: add event listener for clikcing navbar sections, which then calls scrollintoview or some other method
+for (let i = 0; i < navSections.length; i++) {
+    console.log('adding event listener ' + i);
+    let navLink = document.getElementById('navlink' + i);
+    navLink.addEventListener('click', function() {
+        console.log('scrolling to section ' + (i+1));
+    });
+}
