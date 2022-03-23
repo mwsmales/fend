@@ -16,19 +16,19 @@
 /**
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
- */
+ */ 
 
 /**
  * Define Global Variables
  * 
- */
+ */ 
 
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
- */
+ */ 
 
 
 function addNavSections(sections) {
@@ -41,9 +41,9 @@ function addNavSections(sections) {
         new_li.id = 'navlink' + (i+1);
         new_li.dataset.xref = sections[i].id
         fragment.appendChild(new_li);
-    }
+    }    
     document.getElementById('navbar__list').append(fragment);
-};
+};    
 
 
 function addNavbarListeners (sections) {
@@ -54,8 +54,21 @@ function addNavbarListeners (sections) {
             event.preventDefault();
             let scrollTarget = document.getElementById(navLink.dataset.xref);
             scrollTarget.scrollIntoView({behavior:'smooth'});
-        }); 
-    }
+        });     
+    }    
+}    
+
+
+function addScrolllisteners (sections) {
+    // add event listener for scrolling, which calls function to check and update active section
+    document.addEventListener('scroll', function() {
+        let topSection = identifyTopSection(sections);
+        let activeSection = document.querySelector('.your-active-class');
+        if (topSection != activeSection) {
+            removeActiveSection();
+            addActiveSection(topSection);
+        }
+    });
 }
 
 
@@ -63,7 +76,7 @@ function addNavbarListeners (sections) {
  * End Helper Functions
  * Begin Main Functions
  * 
-*/
+*/ 
 
 // build the nav
 let sections = document.getElementsByTagName('section'); //store html collection
@@ -76,41 +89,36 @@ function removeActiveSection() {
     let prevActiveSection = document.querySelector('.your-active-class');
     prevActiveSection.classList.remove('your-active-class');
     document.querySelector('.your-active-class');
-}
+}    
 
 
-function addActiveSection(sectionId) {
-    // function to add the 'your-active-section' class to the element with id=sectionId
-    // sectionId should be provided as string in the format e.g. "#section1"
-    let newActiveSection = document.querySelector(sectionId);
+function addActiveSection(newActiveSection) {
+    // function to add the 'your-active-section' class to an element
+    console.log(`Active section switching to: ${newActiveSection.id}`);
     newActiveSection.classList.add('your-active-class');
-}
+}    
 
-function updateActivecSection(newSectionId) {
-    // function to remove the old 'your-active-section' class and apply it to the specified element
-    // sectionId should be provided as string in the format e.g. "#section1"
-    removeActiveSection();
-    addActiveSection(newSectionId)
-}
 
-function identifyTopSection() {
-    /* TODO: function to determine which section is closest to top of viewport
-     * get dimension of top of viewport
-     * get dimension of top of each section
-     * loop through the sections and stop at the first where the top of the section is below the top of the viewport
-    */
-}
-
-// Scroll to anchor ID using scrollTO event
-
+function identifyTopSection(sections) {
+    // function to determine which section is closest to top of viewport
+    let tolerance = 150; // tolerance for top of section being slightly off-screen
+    let topSection;
+    for (let i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top >= -tolerance) {
+            topSection = sections[i];
+            break;
+        }    
+    }    
+    return topSection
+}    
 
 /**
  * End Main Functions
  * Begin Events
  * 
-*/
+*/ 
 
-// TODO: add event listener for scrolling, which calls function to check and update active section
-document.addEventListener('scroll', function() {console.log('the page scrolled!')});
+addScrolllisteners(sections);
 
 addNavbarListeners(sections);
+
