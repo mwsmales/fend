@@ -11,24 +11,24 @@
  * 
  * JS Standard: ESlint
  * 
-*/
+ */
 
 /**
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
-*/
+ */
 
 /**
  * Define Global Variables
  * 
-*/
+ */
 
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
-*/
+ */
 
 
 function addNavSections(sections) {
@@ -44,6 +44,19 @@ function addNavSections(sections) {
     }
     document.getElementById('navbar__list').append(fragment);
 };
+
+
+function addNavbarListeners (sections) {
+    // Add event listeners for clikcing navbar sections, which then calls scrollintoview or some other method
+    for (let i = 0; i < sections.length; i++) {
+        let navLink = document.getElementById('navlink' + (i+1));
+        navLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            let scrollTarget = document.getElementById(navLink.dataset.xref);
+            scrollTarget.scrollIntoView({behavior:'smooth'});
+        }); 
+    }
+}
 
 
 /**
@@ -100,14 +113,4 @@ function identifyTopSection() {
 // TODO: add event listener for scrolling, which calls function to check and update active section
 document.addEventListener('scroll', function() {console.log('the page scrolled!')});
 
-// Add event listeners for clikcing navbar sections, which then calls scrollintoview or some other method
-// TODO: update scrolling function so that it is smooth
-for (let i = 0; i < sections.length; i++) {
-    // console.log('adding event listener ' + (i + 1));
-    let navLink = document.getElementById('navlink' + (i+1));
-    navLink.addEventListener('click', function(event) {
-        event.preventDefault();
-        let scrollTarget = document.getElementById(navLink.dataset.xref);
-        scrollTarget.scrollIntoView({behavior:'smooth'});
-    }); 
-}
+addNavbarListeners(sections);
