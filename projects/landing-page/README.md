@@ -2,12 +2,25 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Description](#description)
+* [Usage](#usage)
+* [Development](#development)
 
-## Instructions
+## Description
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This is a project I completed as part of the Udacity frontend development nanodegree.
 
-To get started, open `js/app.js` and start building out the app's functionality
+The aim is to show some functionality that can be added to a webpage using JavaScript.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The main features are:
+* A navbar which is built dynamically, based on the sections included in the HTML
+* Clicking the navbar scrolls to the relevant section
+* Scrolling down the page highlights the current section
+
+## Usage
+
+Close the repository, and switch to the refresh-2019 branch.  This project is in the landing-page folder. Open the index.html file in your browser.
+
+## Development
+
+app.js written by Michael Smales, March 2022.  HTML and CSS files provided by Udacity. 
