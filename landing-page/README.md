@@ -19,7 +19,7 @@ The main features are:
 
 ## Usage
 
-Close the repository, and switch to the refresh-2019 branch.  This project is in the landing-page folder. Open the index.html file in your browser.
+Clone the repository, and switch to the refresh-2019 branch.  This project is in the landing-page folder. Open the index.html file in your browser.
 
 ## Development
 
