@@ -64,8 +64,9 @@ function removeActiveSection() {
     // removes the your-active-selection class from the section which currently has it
     let prevActiveSection = document.querySelector('.your-active-class');
     prevActiveSection.classList.remove('your-active-class');
-    document.querySelector('.your-active-class');
-}            
+    let prevActiveNavlink = document.querySelector('.your-active-navlink');
+    prevActiveNavlink.classList.remove('your-active-navlink');
+}
 
 
 function addActiveSection(newActiveSection) {
@@ -113,7 +114,5 @@ addNavbarListeners(sections);
 addScrollListeners(sections);
 
 // TODO:
-// create a separate your-active-navlink class 
-// we can then easily update the remove active class function to remove the navlink class as well
 // we may need to add a function to select the relevant navlink - we could add xrefs to the section, write a reverse lookup function which loops through the navbars, or use the ordering of the sections
 // finally we should add something to set the first navlink as active when the navlinks are created
