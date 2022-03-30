@@ -212,14 +212,21 @@ section.your-active-class .landing__container::after {
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
+    from {
+        transform: rotate(0deg)
+        translate(-1em)
+        rotate(0deg);
 	}
 	to {
-		transform: rotate(360deg)
-		           translate(-1em) 
-		           rotate(-360deg);
+        transform: rotate(360deg)
+        translate(-1em) 
+        rotate(-360deg);
 	}
+}
+
+/* Navbar Active Styles */
+.navbar__menu .menu__link.your-active-navlink {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
 }

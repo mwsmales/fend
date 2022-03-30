@@ -95,7 +95,7 @@ function identifyTopSection(sections) {
  * 
  */  
 // get the main sections in the DOM
-let sections = document.getElementsByTagName('section'); //store html collection
+let sections = document.getElementsByTagName('section');
 
 // add sections to the the navbar
 addNavSections(sections);
@@ -112,3 +112,8 @@ addNavbarListeners(sections);
 // add event listeners, triggered on scrolling, which upate the section being viewed 
 addScrollListeners(sections);
 
+// TODO:
+// create a separate your-active-navlink class 
+// we can then easily update the remove active class function to remove the navlink class as well
+// we may need to add a function to select the relevant navlink - we could add xrefs to the section, write a reverse lookup function which loops through the navbars, or use the ordering of the sections
+// finally we should add something to set the first navlink as active when the navlinks are created
