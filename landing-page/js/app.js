@@ -30,6 +30,7 @@ function addNavSections(sections) {
         new_li.dataset.xref = sections[i].id
         fragment.appendChild(new_li);
     }        
+    fragment.getElementById('navlink1').classList.add('your-active-navlink'); // set 1st section as active
     document.getElementById('navbar__list').append(fragment);
 }
 
@@ -115,4 +116,3 @@ addScrollListeners(sections);
 
 // TODO:
 // we may need to add a function to select the relevant navlink - we could add xrefs to the section, write a reverse lookup function which loops through the navbars, or use the ordering of the sections
-// finally we should add something to set the first navlink as active when the navlinks are created
