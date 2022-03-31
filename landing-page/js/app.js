@@ -74,6 +74,18 @@ function addActiveSection(newActiveSection) {
     // function to add the 'your-active-section' class to an element
     console.log(`Active section switching to: ${newActiveSection.id}`);
     newActiveSection.classList.add('your-active-class');
+    // identify the corresponding navlink
+    const navLinks = document.getElementsByTagName('li'); // get array of navLinks
+    let newActiveLink;
+    // iterate through navLinks and identify the one corresponding to the newActiveSection
+    for (const navLink of navLinks) {
+        if (navLink.dataset.xref == newActiveSection.id) {
+            newActiveLink = navLink;
+            break;
+        }
+    }
+    // tag the new active navlink
+    newActiveLink.classList.add('your-active-navlink');
 }            
 
 
