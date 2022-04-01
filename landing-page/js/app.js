@@ -41,9 +41,18 @@ function createHamburger() {
     const hamburgerIcon = document.createElement('a');
     hamburgerIcon.href = 'javascript:void(0);';
     hamburgerIcon.classList = 'icon menu__link';
-    hamburgerIcon.setAttribute('onclick', 'myFunction()');
+    hamburgerIcon.setAttribute('onclick', 'toggleNavMenu()');
     hamburgerIcon.innerHTML = '<i class="fa fa-bars"></i>';
     return(hamburgerIcon);
+}
+
+function toggleNavMenu() {
+    // function to toggle the navmenu on a small screen
+    if (document.getElementById('navbar__menu').classList == 'navbar__menu') {
+        document.getElementById('navbar__menu').classList += ' expanded';
+    } else {
+        document.getElementById('navbar__menu').classList = 'navbar__menu';
+    }
 }
 
 
