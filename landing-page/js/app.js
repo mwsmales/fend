@@ -53,10 +53,10 @@ function addScrollListeners (sections) {
     document.addEventListener('scroll', function() {
         let topSection = identifyTopSection(sections);
         let activeSection = document.querySelector('.your-active-class');
-        if (topSection != activeSection) {
+        if (topSection != activeSection && topSection != undefined) {
             removeActiveSection();
             addActiveSection(topSection);
-        }    
+        }
     });    
 }    
 
@@ -91,6 +91,7 @@ function addActiveSection(newActiveSection) {
 
 function identifyTopSection(sections) {
     // function to determine which section is closest to top of viewport
+    // Note: if all sections are off the top of the screen this will return 'undefined'
     let tolerance = 150; // tolerance for top of section being slightly off-screen
     let topSection;
     for (let i = 0; i < sections.length; i++) {
@@ -125,6 +126,3 @@ addNavbarListeners(sections);
 
 // add event listeners, triggered on scrolling, which upate the section being viewed 
 addScrollListeners(sections);
-
-// TODO:
-// we may need to add a function to select the relevant navlink - we could add xrefs to the section, write a reverse lookup function which loops through the navbars, or use the ordering of the sections
