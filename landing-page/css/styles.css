@@ -101,6 +101,47 @@ section {
     background-color: #333;
 }
 
+@media only screen and (min-width: 35em){
+    .navbar__menu .icon {
+        display:none;
+    }
+}
+
+@media screen and (max-width: 35em){
+    /* small-screen menu collapsed */
+    .navbar__menu #navbar__list {
+        text-align: left;
+    }
+
+    .navbar__menu li.menu__link:not(.your-active-navlink) {
+        display: none;
+    }
+
+    .navbar__menu li.menu__link {
+        width: 100%;
+    }
+
+    .navbar__menu .icon {
+        display: block;
+    }
+
+    /* small-screen menu expanded */
+    .navbar__menu.expanded #navbar__list {
+        display: block;
+        text-align: left;
+    }
+    
+    .navbar__menu.expanded li.menu__link {
+        display: block;
+    }
+
+    .navbar__menu.expanded .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;
