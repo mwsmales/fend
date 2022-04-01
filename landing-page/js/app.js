@@ -51,14 +51,20 @@ function addNavbarListeners (sections) {
 function addScrollListeners (sections) {
     // add event listener for scrolling, which calls function to check and update active section
     document.addEventListener('scroll', function() {
-        let topSection = identifyTopSection(sections);
-        let activeSection = document.querySelector('.your-active-class');
-        if (topSection != activeSection && topSection != undefined) {
-            removeActiveSection();
-            addActiveSection(topSection);
-        }
-    });    
+        updateActiveSection(sections);
+    });
 }    
+
+
+function updateActiveSection (sections) {
+    // checks what section should be active and updates HTML accordingly
+    let topSection = identifyTopSection(sections);
+    let activeSection = document.querySelector('.your-active-class');
+    if (topSection != activeSection && topSection != undefined) {
+        removeActiveSection();
+        addActiveSection(topSection);
+    }
+}
 
 
 function removeActiveSection() {
