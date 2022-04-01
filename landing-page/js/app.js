@@ -31,7 +31,19 @@ function addNavSections(sections) {
         fragment.appendChild(new_li);
     }        
     fragment.getElementById('navlink1').classList.add('your-active-navlink'); // set 1st section as active
-    document.getElementById('navbar__list').append(fragment);
+    const hamburgerIcon = createHamburger();
+    fragment.appendChild(hamburgerIcon);
+    document.getElementById('navbar__list').append(fragment); // add fragment to the doc
+}
+
+
+function createHamburger() {
+    const hamburgerIcon = document.createElement('a');
+    hamburgerIcon.href = 'javascript:void(0);';
+    hamburgerIcon.classList = 'icon menu__link';
+    hamburgerIcon.setAttribute('onclick', 'myFunction()');
+    hamburgerIcon.innerHTML = '<i class="fa fa-bars"></i>';
+    return(hamburgerIcon);
 }
 
 
